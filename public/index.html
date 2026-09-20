@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HomeWorth AI – Price Estimator</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- Animated background blobs -->
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+  <div class="blob blob4"></div>
+
+  <!-- Floating particles canvas -->
+  <canvas id="particles"></canvas>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar">
+    <div class="nav-logo">
+      <i class="fa-solid fa-house-chimney"></i>
+      <span>HomeWorth<span class="accent"> AI</span></span>
+    </div>
+    <div class="nav-links">
+      <a href="#hero">Home</a>
+      <a href="#estimator">Estimator</a>
+      <a href="#about">About</a>
+    </div>
+    <div class="nav-badge">
+      <i class="fa-solid fa-brain"></i> ML Powered
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-tag"><i class="fa-solid fa-sparkles"></i> AI Price Intelligence</div>
+      <h1 class="hero-title">
+        Discover Your<br/>
+        <span class="gradient-text">Dream Home's</span><br/>
+        True Value
+      </h1>
+      <p class="hero-sub">
+        Our machine-learning model analyses area, layout, location tier<br/>
+        and more to give you an instant, accurate price estimate.
+      </p>
+      <a href="#estimator" class="cta-btn">
+        <i class="fa-solid fa-calculator"></i> Estimate Now
+      </a>
+    </div>
+
+    <div class="hero-cards">
+      <div class="floating-card fc1">
+        <i class="fa-solid fa-bed"></i>
+        <span>Bedrooms</span>
+      </div>
+      <div class="floating-card fc2">
+        <i class="fa-solid fa-bath"></i>
+        <span>Bathrooms</span>
+      </div>
+      <div class="floating-card fc3">
+        <i class="fa-solid fa-ruler-combined"></i>
+        <span>Area (sqft)</span>
+      </div>
+      <div class="floating-card fc4">
+        <i class="fa-solid fa-building"></i>
+        <span>Floors</span>
+      </div>
+      <!-- Big house SVG illustration -->
+      <div class="house-illustration">
+        <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+          <!-- Sky gradient -->
+          <defs>
+            <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#a78bfa"/>
+              <stop offset="100%" style="stop-color:#f9a8d4"/>
+            </linearGradient>
+            <linearGradient id="roofGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#7c3aed"/>
+              <stop offset="100%" style="stop-color:#db2777"/>
+            </linearGradient>
+            <linearGradient id="wallGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#fde68a"/>
+              <stop offset="100%" style="stop-color:#fbbf24"/>
+            </linearGradient>
+          </defs>
+          <rect width="200" height="180" fill="url(#skyGrad)" rx="16"/>
+          <!-- Sun -->
+          <circle cx="160" cy="35" r="18" fill="#fef08a" opacity="0.9"/>
+          <circle cx="160" cy="35" r="24" fill="#fef08a" opacity="0.3"/>
+          <!-- Clouds -->
+          <ellipse cx="40" cy="40" rx="22" ry="12" fill="white" opacity="0.7"/>
+          <ellipse cx="58" cy="36" rx="16" ry="10" fill="white" opacity="0.7"/>
+          <ellipse cx="25" cy="44" rx="14" ry="9" fill="white" opacity="0.7"/>
+          <!-- Ground -->
+          <rect x="0" y="148" width="200" height="32" fill="#4ade80" opacity="0.8" rx="4"/>
+          <rect x="0" y="158" width="200" height="22" fill="#16a34a" opacity="0.6"/>
+          <!-- House wall -->
+          <rect x="40" y="95" width="120" height="65" fill="url(#wallGrad)" rx="4"/>
+          <!-- Roof -->
+          <polygon points="30,98 100,40 170,98" fill="url(#roofGrad)"/>
+          <!-- Chimney -->
+          <rect x="130" y="52" width="14" height="30" fill="#7c3aed"/>
+          <rect x="127" y="48" width="20" height="7" fill="#6d28d9"/>
+          <!-- Door -->
+          <rect x="84" y="120" width="32" height="40" fill="#854d0e" rx="3"/>
+          <circle cx="112" cy="141" r="2.5" fill="#fbbf24"/>
+          <!-- Windows -->
+          <rect x="52" y="108" width="24" height="20" fill="#bfdbfe" rx="3"/>
+          <line x1="64" y1="108" x2="64" y2="128" stroke="#93c5fd" stroke-width="1.5"/>
+          <line x1="52" y1="118" x2="76" y2="118" stroke="#93c5fd" stroke-width="1.5"/>
+          <rect x="124" y="108" width="24" height="20" fill="#bfdbfe" rx="3"/>
+          <line x1="136" y1="108" x2="136" y2="128" stroke="#93c5fd" stroke-width="1.5"/>
+          <line x1="124" y1="118" x2="148" y2="118" stroke="#93c5fd" stroke-width="1.5"/>
+          <!-- Trees -->
+          <rect x="12" y="128" width="6" height="22" fill="#92400e"/>
+          <circle cx="15" cy="120" r="14" fill="#22c55e"/>
+          <rect x="178" y="132" width="6" height="18" fill="#92400e"/>
+          <circle cx="181" cy="124" r="12" fill="#16a34a"/>
+          <!-- Path -->
+          <polygon points="88,160 112,160 118,180 82,180" fill="#d6d3d1"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STATS BAR ── -->
+  <section class="stats-bar">
+    <div class="stat">
+      <i class="fa-solid fa-chart-line"></i>
+      <div><span class="stat-num">95%</span><span class="stat-lbl">Model Accuracy</span></div>
+    </div>
+    <div class="divider"></div>
+    <div class="stat">
+      <i class="fa-solid fa-database"></i>
+      <div><span class="stat-num">10K+</span><span class="stat-lbl">Data Points</span></div>
+    </div>
+    <div class="divider"></div>
+    <div class="stat">
+      <i class="fa-solid fa-bolt"></i>
+      <div><span class="stat-num">&lt; 1s</span><span class="stat-lbl">Prediction Speed</span></div>
+    </div>
+    <div class="divider"></div>
+    <div class="stat">
+      <i class="fa-solid fa-indian-rupee-sign"></i>
+      <div><span class="stat-num">Lakhs</span><span class="stat-lbl">Price in INR</span></div>
+    </div>
+  </section>
+
+  <!-- ── ESTIMATOR ── -->
+  <section class="estimator" id="estimator">
+    <div class="estimator-header">
+      <div class="section-tag"><i class="fa-solid fa-wand-magic-sparkles"></i> Smart Estimator</div>
+      <h2>Get Your Instant <span class="gradient-text">Price Estimate</span></h2>
+      <p>Fill in your property details and let our AI model do the magic.</p>
+    </div>
+
+    <div class="form-card">
+      <!-- Left decorative strip -->
+      <div class="form-deco">
+        <i class="fa-solid fa-house-chimney-window fa-4x"></i>
+        <p>Enter property<br/>details below</p>
+        <div class="deco-dots">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <!-- Actual form -->
+      <form class="price-form" id="priceForm">
+        <div class="form-grid">
+
+          <div class="input-group" data-color="purple">
+            <label><i class="fa-solid fa-ruler-combined"></i> Area (sqft)</label>
+            <input type="number" id="area" placeholder="e.g. 1500" min="100" required/>
+          </div>
+
+          <div class="input-group" data-color="pink">
+            <label><i class="fa-solid fa-bed"></i> Bedrooms</label>
+            <input type="number" id="bedrooms" placeholder="e.g. 3" min="1" max="10" required/>
+          </div>
+
+          <div class="input-group" data-color="cyan">
+            <label><i class="fa-solid fa-bath"></i> Bathrooms</label>
+            <input type="number" id="bathrooms" placeholder="e.g. 2" min="1" max="10" required/>
+          </div>
+
+          <div class="input-group" data-color="orange">
+            <label><i class="fa-solid fa-building"></i> Floors</label>
+            <input type="number" id="floors" placeholder="e.g. 2" min="1" max="20" required/>
+          </div>
+
+          <div class="input-group" data-color="green">
+            <label><i class="fa-solid fa-calendar"></i> Year Built</label>
+            <input type="number" id="year" placeholder="e.g. 2015" min="1900" max="2025" required/>
+          </div>
+
+          <div class="input-group" data-color="yellow">
+            <label><i class="fa-solid fa-layer-group"></i> Location Tier</label>
+            <div class="tier-selector">
+              <label class="tier-opt" data-tier="1">
+                <input type="radio" name="tier" value="1" required/>
+                <span><i class="fa-solid fa-city"></i> Tier 1<small>Metro</small></span>
+              </label>
+              <label class="tier-opt" data-tier="2">
+                <input type="radio" name="tier" value="2"/>
+                <span><i class="fa-solid fa-building-columns"></i> Tier 2<small>Urban</small></span>
+              </label>
+              <label class="tier-opt" data-tier="3">
+                <input type="radio" name="tier" value="3"/>
+                <span><i class="fa-solid fa-tree-city"></i> Tier 3<small>Semi-Urban</small></span>
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+        <button type="submit" class="predict-btn" id="predictBtn">
+          <span class="btn-text"><i class="fa-solid fa-calculator"></i> Estimate Price</span>
+          <span class="btn-loader hidden"><i class="fa-solid fa-spinner fa-spin"></i> Calculating...</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- Result Panel -->
+    <div class="result-panel hidden" id="resultPanel">
+      <div class="result-bg"></div>
+      <div class="result-content">
+        <div class="result-icon"><i class="fa-solid fa-house-circle-check"></i></div>
+        <p class="result-label">Estimated Property Value</p>
+        <h1 class="result-price" id="resultPrice">₹ 0 <span>Lakhs</span></h1>
+        <div class="result-tags" id="resultTags"></div>
+        <button class="reset-btn" id="resetBtn">
+          <i class="fa-solid fa-rotate-left"></i> New Estimate
+        </button>
+      </div>
+      <!-- Confetti canvas -->
+      <canvas id="confetti"></canvas>
+    </div>
+  </section>
+
+  <!-- ── ABOUT / FEATURES ── -->
+  <section class="about" id="about">
+    <div class="section-tag"><i class="fa-solid fa-info-circle"></i> How It Works</div>
+    <h2>Powered by <span class="gradient-text">Machine Learning</span></h2>
+
+    <div class="features-grid">
+      <div class="feature-card" style="--c1:#7c3aed;--c2:#db2777">
+        <div class="feat-icon"><i class="fa-solid fa-brain"></i></div>
+        <h3>Linear Regression Model</h3>
+        <p>Trained on a curated real-estate dataset using scikit-learn for accurate price prediction.</p>
+      </div>
+      <div class="feature-card" style="--c1:#0891b2;--c2:#7c3aed">
+        <div class="feat-icon"><i class="fa-solid fa-table-cells-large"></i></div>
+        <h3>6 Smart Features</h3>
+        <p>Area, bedrooms, bathrooms, floors, year built, and location tier feed the model.</p>
+      </div>
+      <div class="feature-card" style="--c1:#ea580c;--c2:#f59e0b">
+        <div class="feat-icon"><i class="fa-solid fa-rocket"></i></div>
+        <h3>Real-Time Prediction</h3>
+        <p>Node.js server bridges your browser to the Python ML backend in milliseconds.</p>
+      </div>
+      <div class="feature-card" style="--c1:#16a34a;--c2:#0891b2">
+        <div class="feat-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+        <h3>Price in Lakhs (INR)</h3>
+        <p>Output is calibrated to Indian real-estate pricing, expressed in Lakhs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="footer-logo">
+      <i class="fa-solid fa-house-chimney"></i> HomeWorth<span class="accent"> AI</span>
+    </div>
+    <p>Built with <i class="fa-solid fa-heart" style="color:#f43f5e"></i> using Python · scikit-learn · Node.js · Express</p>
+    <p class="footer-note">This is an educational ML project. Prices are estimates only.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
